@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import YapDatabase
 
-final class DatabaseManager {
+final class DatabaseManager: StorageManagerProtocol {
     static let shared = DatabaseManager()
 
     private let albumsCollection = "albums"
@@ -82,7 +82,7 @@ final class DatabaseManager {
         return album
     }
 
-    func loadAllAlbums(forTerm term: String) -> [Album] {
+    func loadAlbums(forTerm term: String) -> [Album] {
         var albums = [Album]()
 
         connection.read { transaction in
